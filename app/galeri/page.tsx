@@ -1,5 +1,6 @@
 import { createClient } from '@/utils/supabase/server';
 import Link from 'next/link';
+import GalleryGrid from '@/components/GalleryGrid';
 
 export const metadata = {
   title: "Galeri - Tongkrongan Kita",
@@ -29,22 +30,9 @@ export default async function Galeri() {
       {error ? (
         <div className="text-center text-red-500">Gagal mengambil data galeri.</div>
       ) : galeriList && galeriList.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {galeriList.map((foto) => (
-            <div key={foto.id} className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition flex flex-col">
-              <div className="bg-gray-200 aspect-video flex items-center justify-center text-gray-400 overflow-hidden">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={foto.image_url} alt={foto.ket} className="object-cover w-full h-full" />
-              </div>
-              <div className="p-4 flex flex-col justify-between flex-grow">
-                <p className="font-semibold text-gray-800 mb-1">{foto.ket}</p>
-                <p className="text-gray-500 text-sm">{foto.tanggal}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <GalleryGrid galeriList={galeriList} isAuthenticated={!!user} />
       ) : (
-        <div className="text-center text-gray-500">Belum ada foto di galeri.</div>
+        <div className="text-center text-gray-500 bg-white p-12 border border-dashed rounded-xl">Belum ada foto di galeri.</div>
       )}
     </div>
   );
