@@ -25,7 +25,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="id"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-gray-50 text-gray-800 font-sans">
+      <body className="min-h-full flex flex-col bg-[var(--spotify-base)] text-white font-sans">
         <Navbar />
         <main className="flex-grow">
           {children}

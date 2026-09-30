@@ -81,12 +81,9 @@ export default function NavbarAuthSection() {
 
   return (
     <>
-      {/* Menu Admin — hanya tampil jika user adalah Admin */}
+      {/* Menu Admin */}
       {isAdmin && (
-        <Link
-          href="/admin"
-          className="text-purple-600 hover:text-purple-800 transition font-bold text-sm"
-        >
+        <Link href="/admin" className="text-[var(--spotify-green)] hover:text-white transition font-bold text-sm">
           Admin
         </Link>
       )}
@@ -94,35 +91,23 @@ export default function NavbarAuthSection() {
       <div className="text-sm font-medium flex items-center gap-4">
         {user ? (
           <>
-            <Link
-              href="/profile"
-              className="flex items-center gap-2 hover:bg-gray-50 px-2 py-1 rounded-lg transition"
-            >
+            <Link href="/profile" className="flex items-center gap-2 hover:bg-[var(--spotify-highlight)] px-3 py-1.5 rounded-full transition">
               {memberData?.avatar_url ? (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={memberData.avatar_url}
-                  alt="Profile"
-                  className="w-8 h-8 rounded-full object-cover border border-gray-200"
-                />
+                <img src={memberData.avatar_url} alt="Profile" className="w-8 h-8 rounded-full object-cover" />
               ) : (
-                <div className="w-8 h-8 bg-blue-100 text-blue-600 flex items-center justify-center rounded-full font-bold text-sm">
-                  {memberData?.panggilan?.charAt(0)?.toUpperCase() ||
-                    user.email?.charAt(0)?.toUpperCase() ||
-                    "U"}
+                <div className="w-8 h-8 bg-[var(--spotify-highlight)] text-[var(--spotify-green)] flex items-center justify-center rounded-full font-bold text-sm">
+                  {memberData?.panggilan?.charAt(0)?.toUpperCase() || user.email?.charAt(0)?.toUpperCase() || "U"}
                 </div>
               )}
-              <span className="hidden sm:inline-block text-gray-700">
+              <span className="hidden sm:inline-block text-white">
                 {memberData?.panggilan || "Profile"}
               </span>
             </Link>
             <LogoutButton />
           </>
         ) : (
-          <Link
-            href="/login"
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition shadow-sm"
-          >
+          <Link href="/login" className="bg-white text-black px-6 py-2 rounded-full hover:scale-105 transition-transform font-bold">
             Login
           </Link>
         )}

@@ -13,7 +13,6 @@ export default function LogoutButton() {
     setIsLoggingOut(true);
     const supabase = createClient();
     await supabase.auth.signOut();
-    // Tutup modal terlebih dahulu sebelum redirect
     setShowModal(false);
     setIsLoggingOut(false);
     router.push("/login");
@@ -23,48 +22,46 @@ export default function LogoutButton() {
     <>
       <button
         onClick={() => setShowModal(true)}
-        className="bg-red-50 text-red-600 px-4 py-2 rounded-lg hover:bg-red-100 transition font-medium"
+        className="bg-transparent text-[var(--spotify-subtext)] px-4 py-2 rounded-full hover:text-white hover:bg-[var(--spotify-highlight)] transition font-medium text-sm"
       >
         Logout
       </button>
 
       {showModal && (
-        // Backdrop dengan efek Glassmorphism Blur
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/40 backdrop-blur-md"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-md"
           onClick={(e) => {
-            // Tutup jika klik di luar modal
             if (e.target === e.currentTarget) setShowModal(false);
           }}
         >
-          <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-sm w-full animate-in fade-in zoom-in duration-200">
+          <div className="bg-[var(--spotify-elevated)] border border-gray-800 rounded-2xl shadow-2xl p-8 max-w-sm w-full animate-in fade-in zoom-in duration-200">
             <div className="text-center mb-6">
-              <div className="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-3xl">👋</span>
+              <div className="w-16 h-16 bg-[#333] rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg text-[var(--spotify-green)]">
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Konfirmasi Keluar</h3>
-              <p className="text-gray-500 text-sm">Apakah Anda yakin ingin keluar dari akun ini?</p>
+              <h3 className="text-2xl font-bold text-white mb-2">Konfirmasi Keluar</h3>
+              <p className="text-[var(--spotify-subtext)] text-sm">Apakah Anda yakin ingin keluar dari akun ini?</p>
             </div>
 
             <div className="flex flex-col sm:flex-row justify-center gap-3">
               <button
                 onClick={() => setShowModal(false)}
                 disabled={isLoggingOut}
-                className="px-6 py-2.5 bg-gray-100 text-gray-800 rounded-lg hover:bg-gray-200 transition font-medium disabled:opacity-50"
+                className="px-6 py-2.5 bg-transparent border border-gray-600 text-[var(--spotify-subtext)] rounded-full hover:text-white hover:border-white transition font-bold disabled:opacity-50"
               >
                 Batal
               </button>
               <button
                 onClick={handleLogout}
                 disabled={isLoggingOut}
-                className="px-6 py-2.5 bg-red-600 text-white rounded-lg hover:bg-red-700 transition font-medium shadow-sm disabled:bg-red-400 flex items-center gap-2"
+                className="px-6 py-2.5 bg-[var(--spotify-green)] text-black rounded-full hover:scale-105 transition-transform font-bold shadow-lg disabled:opacity-50 disabled:scale-100 flex items-center justify-center gap-2"
               >
                 {isLoggingOut ? (
                   <>
-                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                    <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" />
                     Keluar...
                   </>
-                ) : "Ya, Logout Sekarang"}
+                ) : "Ya, Logout"}
               </button>
             </div>
           </div>

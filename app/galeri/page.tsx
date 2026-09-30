@@ -15,13 +15,13 @@ export default async function Galeri() {
     <div className="py-16 px-4 max-w-6xl mx-auto">
       <div className="flex flex-col sm:flex-row justify-between items-center mb-12">
         <div>
-          <h1 className="text-4xl font-bold mb-2 text-gray-800">Galeri Kenangan</h1>
-          <p className="text-gray-600">
+          <h1 className="text-4xl font-bold mb-2 text-white">Galeri Kenangan</h1>
+          <p className="text-[var(--spotify-subtext)]">
             Kumpulan momen berharga yang sempat terabadikan kamera.
           </p>
         </div>
         {user && (
-          <Link href="/galeri/upload" className="mt-4 sm:mt-0 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
+          <Link href="/galeri/upload" className="mt-4 sm:mt-0 bg-[var(--spotify-green)] text-black font-bold px-6 py-2.5 rounded-full hover:scale-105 transition-transform">
             + Upload Foto
           </Link>
         )}
@@ -32,7 +32,7 @@ export default async function Galeri() {
       ) : galeriList && galeriList.length > 0 ? (
         <GalleryGrid galeriList={galeriList} isAuthenticated={!!user} />
       ) : (
-        <div className="text-center text-gray-500 bg-white p-12 border border-dashed rounded-xl">Belum ada foto di galeri.</div>
+        <div className="text-center text-[var(--spotify-subtext)] bg-[var(--spotify-elevated)] p-12 rounded-xl">Belum ada foto di galeri.</div>
       )}
     </div>
   );

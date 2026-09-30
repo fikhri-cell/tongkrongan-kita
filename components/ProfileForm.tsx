@@ -21,7 +21,6 @@ export default function ProfileForm({ memberData, userId }: { memberData: { pang
     const supabase = createClient();
     let updatedAvatarUrl = memberData.avatar_url;
 
-    // Jika ada file avatar baru yang dipilih
     if (avatarFile) {
       const fileExt = avatarFile.name.split('.').pop();
       const fileName = `${userId}-${Date.now()}.${fileExt}`;
@@ -44,7 +43,6 @@ export default function ProfileForm({ memberData, userId }: { memberData: { pang
       updatedAvatarUrl = publicUrlData.publicUrl;
     }
 
-    // Update data di tabel members
     const { error: updateError } = await supabase
       .from('members')
       .update({
@@ -65,51 +63,51 @@ export default function ProfileForm({ memberData, userId }: { memberData: { pang
   }
 
   return (
-    <form onSubmit={handleUpdate} className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 flex flex-col gap-6">
+    <form onSubmit={handleUpdate} className="bg-[var(--spotify-elevated)] p-8 rounded-xl shadow-2xl border border-gray-800 flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
       
       {/* Avatar Section */}
-      <div className="flex flex-col sm:flex-row items-center gap-6 pb-6 border-b border-gray-100">
-        <div className="w-24 h-24 rounded-full bg-gray-200 overflow-hidden border-2 border-white shadow flex-shrink-0">
+      <div className="flex flex-col sm:flex-row items-center gap-6 pb-6 border-b border-gray-800">
+        <div className="w-32 h-32 rounded-full bg-black overflow-hidden shadow-2xl flex-shrink-0 relative group">
           {avatarFile ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={URL.createObjectURL(avatarFile)} alt="Preview" className="w-full h-full object-cover" />
+            <img src={URL.createObjectURL(avatarFile)} alt="Preview" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
           ) : memberData.avatar_url ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={memberData.avatar_url} alt="Avatar" className="w-full h-full object-cover" />
+            <img src={memberData.avatar_url} alt="Avatar" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
           ) : (
-            <div className="w-full h-full flex items-center justify-center text-gray-400 text-3xl font-bold bg-blue-50 text-blue-300">
+            <div className="w-full h-full flex items-center justify-center text-[var(--spotify-green)] text-5xl font-extrabold bg-[#333]">
               {panggilan.charAt(0) || 'U'}
             </div>
           )}
         </div>
         <div className="flex flex-col gap-2">
-          <label className="font-medium text-gray-700">Ubah Foto Profil</label>
+          <label className="font-bold text-[var(--spotify-subtext)] uppercase tracking-wider text-sm">Ubah Foto Profil</label>
           <input 
             type="file" 
             accept="image/jpeg, image/png, image/webp"
             onChange={(e) => setAvatarFile(e.target.files?.[0] || null)}
-            className="text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+            className="text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-bold file:bg-[var(--spotify-highlight)] file:text-[var(--spotify-green)] hover:file:bg-[#333] cursor-pointer focus:outline-none focus:ring-2 focus:ring-[var(--spotify-green)]"
           />
         </div>
       </div>
 
       <div className="flex flex-col gap-2">
-        <label className="font-medium text-gray-700">Nama Panggilan / Display Name</label>
+        <label className="font-bold text-[var(--spotify-subtext)] uppercase tracking-wider text-sm">Nama Panggilan / Display Name</label>
         <input 
           value={panggilan}
           onChange={(e) => setPanggilan(e.target.value)}
           required 
-          className="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500" 
+          className="px-4 py-3 bg-[var(--spotify-highlight)] text-white border-none rounded-lg focus:ring-2 focus:ring-[var(--spotify-green)] outline-none transition" 
         />
       </div>
 
       <div className="flex flex-col gap-2">
-        <label className="font-medium text-gray-700">Peran / Deskripsi di Tongkrongan</label>
+        <label className="font-bold text-[var(--spotify-subtext)] uppercase tracking-wider text-sm">Peran / Deskripsi di Tongkrongan</label>
         <input 
           value={deskripsi}
           onChange={(e) => setDeskripsi(e.target.value)}
           required 
-          className="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500" 
+          className="px-4 py-3 bg-[var(--spotify-highlight)] text-white border-none rounded-lg focus:ring-2 focus:ring-[var(--spotify-green)] outline-none transition" 
           placeholder="Misal: Seksi Konsumsi"
         />
       </div>
@@ -117,15 +115,20 @@ export default function ProfileForm({ memberData, userId }: { memberData: { pang
       <button 
         type="submit" 
         disabled={isSubmitting}
-        className="bg-blue-600 text-white font-medium px-4 py-3 rounded-lg hover:bg-blue-700 transition disabled:bg-blue-400 mt-2"
+        className="bg-[var(--spotify-green)] text-black font-bold px-4 py-3.5 rounded-full hover:scale-105 transition-transform disabled:opacity-50 mt-4 uppercase tracking-wider text-sm shadow-lg flex justify-center items-center gap-2"
       >
-        {isSubmitting ? "Menyimpan..." : "Simpan Perubahan"}
+        {isSubmitting ? (
+          <>
+            <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
+            Menyimpan...
+          </>
+        ) : "Simpan Perubahan"}
       </button>
 
       {message.text && (
-        <p className={`p-3 rounded-lg text-sm font-medium text-center ${message.type === 'success' ? 'bg-green-50 text-green-600' : 'bg-red-50 text-red-600'}`}>
+        <div className={`p-4 rounded-lg text-sm font-bold text-center ${message.type === 'success' ? 'bg-[var(--spotify-green)]/20 text-[var(--spotify-green)] border border-[var(--spotify-green)]' : 'bg-red-900/50 text-red-200 border border-red-500'}`}>
           {message.text}
-        </p>
+        </div>
       )}
     </form>
   );
