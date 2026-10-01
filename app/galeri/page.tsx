@@ -17,7 +17,7 @@ export default async function Galeri() {
         <div>
           <h1 className="text-4xl font-bold mb-2 text-white">Galeri Kenangan</h1>
           <p className="text-[var(--spotify-subtext)]">
-            Kumpulan momen berharga yang sempat terabadikan kamera.
+            Kumpulan momen yang berhasil tertangkap kamera, atau doksli anggota
           </p>
         </div>
         {user && (

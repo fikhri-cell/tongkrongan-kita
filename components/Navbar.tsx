@@ -6,7 +6,7 @@ export default function Navbar() {
     <header className="bg-[var(--spotify-base)] border-b border-gray-800 sticky top-0 z-50">
       <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between">
         <Link href="/" className="text-2xl font-bold text-white mb-4 md:mb-0 hover:text-[var(--spotify-green)] transition">
-          Tongkrongan Kita
+          Selipan
         </Link>
         <nav className="flex flex-col md:flex-row items-center gap-6">
           <ul className="flex flex-wrap justify-center gap-4 sm:gap-6 text-sm font-medium text-[var(--spotify-subtext)]">

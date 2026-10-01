@@ -14,7 +14,7 @@ export default async function Kegiatan() {
     <div className="py-16 px-4 max-w-5xl mx-auto">
       <h1 className="text-4xl font-bold mb-4 text-center text-white tracking-tight">Agenda Kegiatan</h1>
       <p className="text-center text-[var(--spotify-subtext)] mb-8 max-w-2xl mx-auto">
-        Jadwal ngumpul dan kegiatan seru tongkrongan kita. Jangan sampai ketinggalan!
+        Jadwal ngumpul atau kegiatan ekstrim orang orang atos. Jangan sampai ketinggalan!
       </p>
 
       {/* Tampilkan Form Tambah jika user login (Anggota / Admin) */}

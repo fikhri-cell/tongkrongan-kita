@@ -15,7 +15,7 @@ export default async function Anggota() {
     <div className="py-16 px-4 max-w-6xl mx-auto">
       <h1 className="text-4xl font-bold mb-4 text-center text-white">Anggota Tongkrongan</h1>
       <p className="text-center text-[var(--spotify-subtext)] mb-12 max-w-2xl mx-auto">
-        Muka-muka familiar yang selalu meramaikan setiap obrolan. Tanpa mereka, tongkrongan ini nggak akan sama!
+        Muka muka familiar orang orang atos, yang selalu meramaikan blok pahing, meramaikan warung mang tamam mie tek tek, dan warung keny dan ruly!!
       </p>
 
       {error ? (

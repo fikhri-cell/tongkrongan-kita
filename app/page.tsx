@@ -22,10 +22,10 @@ export default async function Home() {
       <section className="bg-gradient-to-b from-[#1DB954]/20 to-[var(--spotify-base)] text-white text-center py-20 px-4 sm:py-32">
         <div className="max-w-3xl mx-auto">
           <h1 className="text-4xl sm:text-5xl font-extrabold mb-6 tracking-tight">
-            Tempat Cerita, Berkumpul, dan Berbagi
+            Tempat Berkumpul Orang-Orang Atos
           </h1>
           <p className="text-lg sm:text-xl mb-8 text-[var(--spotify-subtext)]">
-            Selamat datang di rumah kedua kita. Ruang bebas untuk bertukar pikiran, main bareng, dan menciptakan kenangan tak terlupakan bersama teman-teman terbaik.
+            Selamat datang di website Orang-Orang Atos, Di sini adalah tempat untuk Orang-Orang atos berkumpul secara Digital atau Online, Penasaran dengan Orang-Orang Atos kamu bisa klik tombol di bawah ini
           </p>
           <Link 
             href="/tentang" 
@@ -40,7 +40,7 @@ export default async function Home() {
       <section className="py-16 px-4 max-w-4xl mx-auto text-center">
         <h2 className="text-3xl font-bold mb-6 text-white">Tentang Kami</h2>
         <p className="text-[var(--spotify-subtext)] leading-relaxed text-lg mb-6">
-          Website komunitas ini dibuat sebagai wadah bagi kita semua untuk tetap terhubung, meskipun sibuk dengan kegiatan masing-masing. Di sini kita membagikan momen seru dan merencanakan agenda nongkrong.
+          Website ini dibuat agar kita Orang-orang atos tetap akrab dan tidak lupa teman, di sini kita membagikan momen dan mengatur kegiatan, nongkrong, futsal, jalan-jalan dan lain lain nya.
         </p>
         <Link href="/tentang" className="text-[var(--spotify-green)] font-bold hover:underline tracking-wide uppercase text-sm">Baca cerita lengkapnya &rarr;</Link>
       </section>
